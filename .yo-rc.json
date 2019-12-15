@@ -1,0 +1,45 @@
+{
+  "generator-jhipster": {
+    "promptValues": {
+      "packageName": "validaciontarjetas",
+      "nativeLanguage": "es"
+    },
+    "jhipsterVersion": "6.5.1",
+    "applicationType": "microservice",
+    "baseName": "VERIFICACION",
+    "packageName": "validaciontarjetas",
+    "packageFolder": "validaciontarjetas",
+    "serverPort": "8100",
+    "authenticationType": "jwt",
+    "cacheProvider": "ehcache",
+    "enableHibernateCache": true,
+    "websocket": false,
+    "databaseType": "sql",
+    "devDatabaseType": "mysql",
+    "prodDatabaseType": "mysql",
+    "searchEngine": false,
+    "messageBroker": false,
+    "serviceDiscoveryType": "eureka",
+    "buildTool": "maven",
+    "enableSwaggerCodegen": false,
+    "jwtSecretKey": "NjI0NTU0MjBlMDhjZDE2ODM5NTAxM2E1YzMyYmExMTEwZGY1OGE0MGJjMzBiZGI2MTdkOTg3MDM4OWM0NWUyZGUwOGFjN2JkMDk5MDcyMjI1OGRiOTZhOTQ0ZjFiMjY0NWE3NGNkZTVhMTcwYzQ0NTQ3M2VkNTc0NWRkZWRjOTc=",
+    "embeddableLaunchScript": false,
+    "testFrameworks": [
+      "gatling",
+      "cucumber"
+    ],
+    "jhiPrefix": "jhi",
+    "entitySuffix": "",
+    "dtoSuffix": "DTO",
+    "otherModules": [],
+    "enableTranslation": true,
+    "clientPackageManager": "npm",
+    "nativeLanguage": "es",
+    "languages": [
+      "es"
+    ],
+    "blueprints": [],
+    "skipClient": true,
+    "skipUserManagement": true
+  }
+}
