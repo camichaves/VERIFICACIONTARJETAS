@@ -1,0 +1,12 @@
+
+
+
+entity Tarjeta {
+	tipo String,
+	numero String,
+	codSeguridad Integer,
+    fechaVencimiento Integer,
+    montoMax Double
+}
+
+

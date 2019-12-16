@@ -1,0 +1,37 @@
+{
+    "name": "Tarjeta",
+    "fields": [
+        {
+            "fieldName": "tipo",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "numero",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "codSeguridad",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "fechaVencimiento",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "montoMax",
+            "fieldType": "Double"
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20191215162013",
+    "entityTableName": "tarjeta",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "VERIFICACION",
+    "applications": "*",
+    "microserviceName": "VERIFICACION"
+}
