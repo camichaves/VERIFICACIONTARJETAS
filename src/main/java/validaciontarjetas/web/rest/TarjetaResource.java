@@ -13,10 +13,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
+import java.lang.annotation.Annotation;
 import java.net.URI;
 import java.net.URISyntaxException;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import java.time.*;
@@ -115,8 +117,11 @@ public class TarjetaResource {
     }
 
     @PostMapping("/tarjeta")
-    public ResponseEntity<Object> validarTarjeta(@RequestBody BodyVerifTarjeta body){
-        Optional<Tarjeta> tarjeta = tarjetaRepository.findById(body.getId());
+    public ResponseEntity<Object> validarTarjeta(@RequestBody Tarjeta tarjetaId){
+
+        System.out.println(tarjetaId.toString());
+
+         Optional<Tarjeta> tarjeta = tarjetaRepository.findById(tarjetaId.getId());
 
         if (tarjeta.isPresent()){
             LocalDate today = LocalDate.now();
@@ -126,48 +131,52 @@ public class TarjetaResource {
                  if(tarjeta.get().getFechaVencimiento() >= Integer.parseInt(formato)){
                      // responder HTTP 201
                      System.out.println("todo ok");
-                     return ResponseEntity.status(201).body(null);
+                     Respuesta rta = new Respuesta(21, "Tarjeta valida" );
+                     return ResponseEntity.status(201).body(rta);
                  }
                  else{
                      System.out.println("tarjeta vencida");
                      RespuestaError re = new RespuestaError(21, "Tarjeta vencida" );
-                     return ResponseEntity.status(403).body(re);
+                     return ResponseEntity.status(306).body(re);
                  }
         }else{
             //HTTP 403
 
             RespuestaError re = new RespuestaError(20, "No existe la tarjeta" );
             System.out.println("No existe la tarjeta");
-            return ResponseEntity.status(403).body(re);
+            //return ResponseEntity.status(403).body(re);
+            return ResponseEntity.status(306).body(re);
         }
+         
     }
 
 
 
     @PostMapping("/monto")
-    public ResponseEntity<Object> validarMonto(@RequestBody BodyVerifMonto body){
+    public ResponseEntity<Object> validarMonto(@RequestBody Map<String,String> requestParams){
 
 
-        Optional<Tarjeta> tarjeta = tarjetaRepository.findById(body.getId());
+        Optional<Tarjeta> tarjeta = tarjetaRepository.findById(Long. parseLong(requestParams.get("id")));
         if (tarjeta.isPresent()){
 
-            if(tarjeta.get().getMontoMax()>body.getMonto()){
+            if(tarjeta.get().getMontoMax()>Double.parseDouble(requestParams.get("monto"))|| Double.parseDouble(requestParams.get("monto"))<5000){
                 // responder HTTP 201
                 System.out.println("todo ok");
-                return ResponseEntity.status(201).body(null);
+                Respuesta rta = new Respuesta(22, "Monto valido" );
+                return ResponseEntity.status(201).body(rta);
             }
             else{
                 System.out.println("Monto maximo superado");
                 RespuestaError re = new RespuestaError(30, "Monto maximo superado" );
 
-                return ResponseEntity.status(403).body(re);
+                return ResponseEntity.status(306).body(re);
             }
         }else{
             //HTTP 403
 
             RespuestaError re = new RespuestaError(20, "No existe la tarjeta" );
             System.out.println("No existe la tarjeta");
-            return ResponseEntity.status(403).body(re);
+            return ResponseEntity.status(306).body(re);
         }
     }
     /**
