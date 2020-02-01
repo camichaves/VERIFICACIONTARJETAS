@@ -1,5 +1,6 @@
 package validaciontarjetas.web.rest;
 
+import org.springframework.http.HttpStatus;
 import validaciontarjetas.domain.*;
 import validaciontarjetas.repository.TarjetaRepository;
 import validaciontarjetas.web.rest.errors.BadRequestAlertException;
@@ -138,6 +139,7 @@ public class TarjetaResource {
                      System.out.println("tarjeta vencida");
                      RespuestaError re = new RespuestaError(21, "Tarjeta vencida" );
                      return ResponseEntity.status(306).body(re);
+                     //return new ResponseEntity<>("TARJETA VENCIDA", HttpStatus.FORBIDDEN);
                  }
         }else{
             //HTTP 403
@@ -147,7 +149,7 @@ public class TarjetaResource {
             //return ResponseEntity.status(403).body(re);
             return ResponseEntity.status(306).body(re);
         }
-         
+
     }
 
 
