@@ -54,7 +54,7 @@ public class TarjetaResource {
      * @return the {@link ResponseEntity} with status {@code 201 (Created)} and with body the new tarjeta, or with status {@code 400 (Bad Request)} if the tarjeta has already an ID.
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
-     /*
+
     @PostMapping("/tarjetas")
     public ResponseEntity<Tarjeta> createTarjeta(@RequestBody Tarjeta tarjeta) throws URISyntaxException {
         log.debug("REST request to save Tarjeta : {}", tarjeta);
@@ -66,7 +66,7 @@ public class TarjetaResource {
             .headers(HeaderUtil.createEntityCreationAlert(applicationName, true, ENTITY_NAME, result.getId().toString()))
             .body(result);
     }
-    */
+
     /**
      * {@code PUT  /tarjetas} : Updates an existing tarjeta.
      *
@@ -76,7 +76,7 @@ public class TarjetaResource {
      * or with status {@code 500 (Internal Server Error)} if the tarjeta couldn't be updated.
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
-     /*
+
     @PutMapping("/tarjetas")
     public ResponseEntity<Tarjeta> updateTarjeta(@RequestBody Tarjeta tarjeta) throws URISyntaxException {
         log.debug("REST request to update Tarjeta : {}", tarjeta);
@@ -88,7 +88,7 @@ public class TarjetaResource {
             .headers(HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME, tarjeta.getId().toString()))
             .body(result);
     }
-    */
+
     /**
      * {@code GET  /tarjetas} : get all the tarjetas.
      *
@@ -96,14 +96,14 @@ public class TarjetaResource {
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of tarjetas in body.
      */
 
-     /*
+
     @GetMapping("/tarjetas")
     public List<Tarjeta> getAllTarjetas() {
         log.debug("REST request to get all Tarjetas");
         return tarjetaRepository.findAll();
     }
 
-    */
+
     /**
      * {@code GET  /tarjetas/:id} : get the "id" tarjeta.
      *
@@ -189,11 +189,11 @@ public class TarjetaResource {
      */
 
 
-  /*  @DeleteMapping("/tarjetas/{id}")
+    @DeleteMapping("/tarjetas/{id}")
     public ResponseEntity<Void> deleteTarjeta(@PathVariable Long id) {
         log.debug("REST request to delete Tarjeta : {}", id);
         tarjetaRepository.deleteById(id);
         return ResponseEntity.noContent().headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString())).build();
     }
- */
+
 }
